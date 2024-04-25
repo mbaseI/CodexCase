@@ -17,9 +17,9 @@ const createAxios = (url: string) => {
   return axiosInstance;
 };
 
-var users = createAxios('users');
+const users = createAxios('users');
 
-var ApiStore = {
+const ApiStore = {
   users,
 };
 

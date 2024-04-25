@@ -4,10 +4,10 @@ import Home from './pages/home';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path='/' element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
