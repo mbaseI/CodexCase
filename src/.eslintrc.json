@@ -19,6 +19,7 @@
   },
   "rules": {
     "no-undef": "off",
+    "react/prop-types": "off",
     "indent": "off",
     "comma-spacing": "off",
     "quotes": ["error", "single"],
