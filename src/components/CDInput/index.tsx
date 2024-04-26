@@ -31,6 +31,9 @@ const CDInput: React.FC<CDInputProps> = ({
       size={size}
       value={value}
       label={label}
+      inputProps={{
+        autoComplete: 'off',
+      }}
     />
   );
 };
