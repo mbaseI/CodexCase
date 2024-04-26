@@ -1,10 +1,11 @@
-import { setCount } from './actions';
-import { useAppDispatch } from '../../config/hooks';
+import CDHeader from '../../components/CDHeader';
 
 const Home = () => {
-  const myDispatch = useAppDispatch();
-
-  return <button onClick={() => myDispatch(setCount(5))}>+</button>;
+  return (
+    <>
+      <CDHeader />
+    </>
+  );
 };
 
 export default Home;
