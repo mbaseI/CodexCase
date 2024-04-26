@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const createAxios = (url: string) => {
   const axiosInstance = axios.create({
-    baseURL: `${'https://662a873667df268010a44333.mockapi.io/api/v1'}/${url}`,
+    baseURL: `${'https://662afd75de35f91de156f1f2.mockapi.io/api/v1'}/${url}`,
     timeout: 5000,
     withCredentials: false,
     headers: {
@@ -17,10 +17,10 @@ const createAxios = (url: string) => {
   return axiosInstance;
 };
 
-const users = createAxios('users');
+const books = createAxios('books');
 
 const ApiStore = {
-  users,
+  books,
 };
 
 export default ApiStore;

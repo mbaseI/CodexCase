@@ -1,24 +1,33 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { setCount } from './actions';
-import { GET_PLAYERS } from './constants';
+import { setAllBooks } from './actions';
+import { GET_ALL_BOOKS } from './constants';
 import ApiStore from '../../request';
 
 export interface ResponseGenerator {
-  data?: any;
+  data: [
+    {
+      author?: string;
+      description?: string;
+      price?: string;
+      image?: string;
+      bookName?: string;
+      id?: string;
+    },
+  ];
 }
 
-function* getUsersSaga() {
+function* getAllBooksSaga() {
   try {
-    const users: ResponseGenerator = yield ApiStore.users.get('');
-    yield put(setCount(5));
-    console.log(users);
+    const response: ResponseGenerator = yield ApiStore.books.get('');
+    yield put(setAllBooks(response.data));
+    console.log(response.data);
   } catch (e) {
     console.log(e);
   }
 }
 
 function* homeSaga() {
-  yield takeLatest(GET_PLAYERS, getUsersSaga);
+  yield takeLatest(GET_ALL_BOOKS, getAllBooksSaga);
 }
 
 export default homeSaga;

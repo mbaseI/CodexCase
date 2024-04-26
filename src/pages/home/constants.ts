@@ -1,2 +1,2 @@
-export const SET_COUNT = 'home/SET_COUNT';
-export const GET_PLAYERS = 'home/GET_PLAYERS';
+export const GET_ALL_BOOKS = 'home/GET_ALL_BOOKS';
+export const SET_ALL_BOOKS = 'home/SET_ALL_BOOKS';

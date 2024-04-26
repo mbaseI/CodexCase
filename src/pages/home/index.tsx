@@ -1,8 +1,17 @@
 import { Grid } from '@mui/material';
 import CDCard from '../../components/CDCard';
 import CDHeader from '../../components/CDHeader';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../config/hooks';
+import { getAllBooks } from './actions';
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllBooks());
+  }, [dispatch]);
+
   return (
     <>
       <CDHeader />

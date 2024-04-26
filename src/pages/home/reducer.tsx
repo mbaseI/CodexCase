@@ -1,15 +1,15 @@
 import { produce } from 'immer';
-import { SET_COUNT } from './constants';
+import { SET_ALL_BOOKS } from './constants';
 
 export const initialState = {
-  count: 0,
+  producuts: [],
 };
 
-const homeReducer = (state = initialState, action: { type: any; values: number }) =>
+const homeReducer = (state = initialState, action: { type: any; values: any }) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case SET_COUNT:
-        draft.count = action.values;
+      case SET_ALL_BOOKS:
+        draft.producuts = action.values;
         break;
       default:
         break;

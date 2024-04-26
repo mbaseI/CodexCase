@@ -1,14 +1,14 @@
-import { GET_PLAYERS, SET_COUNT } from './constants';
+import { GET_ALL_BOOKS, SET_ALL_BOOKS } from './constants';
 
-export function setCount(values: number) {
+export function getAllBooks() {
   return {
-    type: SET_COUNT,
-    values,
+    type: GET_ALL_BOOKS,
   };
 }
 
-export function getPlayers() {
+export function setAllBooks(values: any) {
   return {
-    type: GET_PLAYERS,
+    type: SET_ALL_BOOKS,
+    values,
   };
 }
