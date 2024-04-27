@@ -92,7 +92,12 @@ const Home = () => {
     <>
       <Layout>
         <div className={styles.sectionListWrapper}>
-          <CDSectionList onClick={sectionFilterClick} sections={sections} selected={section} />
+          <CDSectionList
+            category={'Technology'}
+            onClick={sectionFilterClick}
+            sections={sections}
+            selected={section}
+          />
         </div>
         {loadingStatus ? (
           <Skeleton

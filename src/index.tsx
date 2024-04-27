@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import { amber, pink } from '@mui/material/colors';
@@ -35,11 +37,15 @@ const theme = createTheme({
   },
 });
 
+const persistor = persistStore(store);
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </ThemeProvider>,
 );

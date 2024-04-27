@@ -6,7 +6,7 @@ const CDCard: React.FC<Book> = ({ author, description, price, image, bookName })
   return (
     <>
       <Card className={styles.card}>
-        <CardMedia component={'img'} alt={'book'} height={'210'} image={image} />
+        <CardMedia component={'img'} alt={'book'} height={'180'} image={image} />
         <CardContent>
           <Typography className={styles.name} gutterBottom variant={'h6'} component={'div'}>
             {bookName}
