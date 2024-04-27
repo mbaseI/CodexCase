@@ -1,15 +1,15 @@
-import CDCard from '../../components/CDCard';
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../config/hooks';
-import { getAllBooks } from './actions';
+import { getAllBooks, setLoading } from './actions';
 import { makeSelectBooks, makeSelectLoading } from './selector';
 import { useDispatch } from 'react-redux';
-import Layout from '../../components/Layout';
-import { Book, Section } from '../../types';
+import { Skeleton } from '@mui/material';
 import Slider from 'react-slick';
 import styles from './style.module.scss';
+import { Book, Section } from '../../types';
+import { useAppSelector } from '../../config/hooks';
+import Layout from '../../components/Layout';
+import CDCard from '../../components/CDCard';
 import CDSectionList from '../../components/CDSectionList';
-import { Skeleton } from '@mui/material';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -40,13 +40,48 @@ const Home = () => {
     slidesToShow: 5,
     slidesToScroll: 5,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 840,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: true,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   let data = booksData.filter((item: Book) => item[section]);
 
   const sectionFilterClick = (value: keyof Book) => {
-    data = booksData.filter((item: Book) => item[section]);
+    dispatch(setLoading(true));
     setSection(value);
+    setTimeout(() => {
+      data = booksData.filter((item: Book) => item[section]);
+      dispatch(setLoading(false));
+    }, 500);
   };
 
   useEffect(() => {
@@ -61,8 +96,8 @@ const Home = () => {
         </div>
         {loadingStatus ? (
           <Skeleton
-            variant='rectangular'
-            animation='wave'
+            variant={'rectangular'}
+            animation={'wave'}
             height={425}
             width={'100%'}
             sx={{ borderRadius: 5 }}

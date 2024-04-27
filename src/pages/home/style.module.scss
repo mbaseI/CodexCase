@@ -4,10 +4,13 @@
 }
 .slide {
   button::before {
-    color: rgba(237, 108, 2, 1) ;
+    color: rgba(237, 108, 2, 1);
   }
 }
 
-.sectionListWrapper{
+.sectionListWrapper {
   display: flex;
+  @media only screen and (max-width: 1440) {
+    display: block !important;
+  }
 }
