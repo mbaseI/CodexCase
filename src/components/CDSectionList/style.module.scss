@@ -1,0 +1,19 @@
+.sectionList {
+  display: inline-flex;
+  border: 1px solid #ed6c02;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  span {
+    border-radius: 8px;
+    padding: 5px 15px;
+    user-select: none;
+    font-weight: 600;
+    cursor: pointer;
+     &:hover {
+      background-color: rgba(237, 108, 2, 0.5);
+    }
+  }
+  .selected {
+    background-color: #ed6c02 !important;
+  }
+}

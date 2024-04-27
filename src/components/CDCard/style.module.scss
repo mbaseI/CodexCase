@@ -1,4 +1,106 @@
 .card {
-  max-width: 245px;
+  position: relative;
+  width: 220px;
   cursor: pointer;
+  &:hover {
+    animation: remove-overflow 2s forwards;
+  }
+  &:hover .price {
+    visibility: hidden;
+  }
+  &:not(:hover) {
+    animation: show-overflow 2s forwards;
+  }
+  &:not(:hover) {
+    .invisButton {
+      animation: remove-data 0.3s forwards;
+    }
+  }
+  &:hover .invisButton {
+    animation: show-data 1s forwards;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  .name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .description {
+    min-height: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+  }
+  .action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .invisButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(237, 108, 2, 1);
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    padding: 0.4em;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
+    position: absolute;
+    bottom: -7rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    opacity: 0;
+    transition: opacity 2s 2s;
+    span {
+      font-weight: 600;
+    }
+    button {
+      &:hover {
+        background-color: rgb(216, 99, 3);
+      }
+    }
+  }
+  .price {
+    font-weight: 600;
+  }
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-8rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(0.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
 }

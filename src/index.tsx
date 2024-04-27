@@ -1,11 +1,13 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ThemeProvider, createTheme } from '@mui/material';
-import { Provider } from 'react-redux';
 import { store } from './store';
-import './index.css';
+import { Provider } from 'react-redux';
+import reportWebVitals from './reportWebVitals';
 import { amber, pink } from '@mui/material/colors';
+import { ThemeProvider, createTheme } from '@mui/material';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './index.css';
 
 const theme = createTheme({
   typography: {

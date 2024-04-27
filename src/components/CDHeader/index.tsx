@@ -5,16 +5,18 @@ import CDInput from '../CDInput';
 
 const CDHeader = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar color={'warning'} position={'static'}>
+    <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
+      <AppBar color={'warning'} position={'fixed'}>
         <Toolbar>
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <IconButton size={'large'} edge={'start'} aria-label={'menu'} sx={{ mr: 2 }}>
-                <img height={20} src={Logo} alt={'Logo'} />
+                <a href='/'>
+                  <img height={20} src={Logo} alt={'Logo'} />
+                </a>
               </IconButton>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4} alignItems={'center'} display={'flex'}>
               <CDInput
                 color={'primary'}
                 fullWidth
@@ -23,7 +25,7 @@ const CDHeader = () => {
                 size={'small'}
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4} alignItems={'center'} display={'flex'} justifyContent={'center'}>
               <IconButton size={'large'} aria-label={'show 4 new mails'} color={'inherit'}>
                 <Badge badgeContent={4} color={'error'}>
                   <Basket />
