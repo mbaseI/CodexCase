@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const createAxios = (url: string) => {
   const axiosInstance = axios.create({
-    baseURL: `${'https://662afd75de35f91de156f1f2.mockapi.io/api/v1'}/${url}`,
+    baseURL: `${process.env.REACT_APP_API_URL}/${url}`,
     timeout: 5000,
     withCredentials: false,
     headers: {

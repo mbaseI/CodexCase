@@ -10,6 +10,7 @@ import { useAppSelector } from '../../config/hooks';
 import Layout from '../../components/Layout';
 import CDCard from '../../components/CDCard';
 import CDSectionList from '../../components/CDSectionList';
+import { addToBasket } from '../../master/actions';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -73,13 +74,17 @@ const Home = () => {
     ],
   };
 
-  let data = booksData.filter((item: Book) => item[section]);
+  const addToBasketClick = (item: Book) => {
+    dispatch(addToBasket(item));
+  };
+
+  let data = booksData?.filter((item: Book) => item[section]);
 
   const sectionFilterClick = (value: keyof Book) => {
     dispatch(setLoading(true));
     setSection(value);
     setTimeout(() => {
-      data = booksData.filter((item: Book) => item[section]);
+      data = booksData?.filter((item: Book) => item[section]);
       dispatch(setLoading(false));
     }, 500);
   };
@@ -112,6 +117,7 @@ const Home = () => {
             {data?.map((item: Book) => (
               <div key={2} className={styles.cardWrapper}>
                 <CDCard
+                  onButtonClick={() => addToBasketClick(item)}
                   bookName={item.bookName}
                   image={item.image}
                   description={item.description}

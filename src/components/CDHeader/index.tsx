@@ -2,8 +2,14 @@ import { AppBar, Badge, Box, Grid, IconButton, Toolbar } from '@mui/material';
 import Basket from '@mui/icons-material/ShoppingBasket';
 import Logo from '../../assets/svg/logo.svg';
 import CDInput from '../CDInput';
+import React from 'react';
 
-const CDHeader = () => {
+type CDHeaderProps = {
+  basketCount: number;
+  openDialog: () => void;
+};
+
+const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog }) => {
   return (
     <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
       <AppBar color={'warning'} position={'fixed'}>
@@ -26,8 +32,13 @@ const CDHeader = () => {
               />
             </Grid>
             <Grid item xs={4} alignItems={'center'} display={'flex'} justifyContent={'center'}>
-              <IconButton size={'large'} aria-label={'show 4 new mails'} color={'inherit'}>
-                <Badge badgeContent={4} color={'error'}>
+              <IconButton
+                onClick={openDialog}
+                size={'large'}
+                aria-label={'show 4 new mails'}
+                color={'inherit'}
+              >
+                <Badge badgeContent={basketCount} color={'error'}>
                   <Basket />
                 </Badge>
               </IconButton>

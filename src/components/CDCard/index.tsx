@@ -1,8 +1,20 @@
 import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import styles from './style.module.scss';
 import { Book } from '../../types';
+import { MouseEventHandler } from 'react';
 
-const CDCard: React.FC<Book> = ({ author, description, price, image, bookName }) => {
+interface CDCardProps extends Book {
+  onButtonClick?: MouseEventHandler<HTMLButtonElement>;
+}
+
+const CDCard: React.FC<CDCardProps> = ({
+  author,
+  description,
+  price,
+  image,
+  bookName,
+  onButtonClick,
+}) => {
   return (
     <>
       <Card className={styles.card}>
@@ -20,7 +32,7 @@ const CDCard: React.FC<Book> = ({ author, description, price, image, bookName })
           <span className={styles.price}>${price}</span>
           <div className={styles.invisButton}>
             <span>${price}</span>
-            <Button sx={{ fontWeight: 'bold' }} size='small'>
+            <Button onClick={onButtonClick} sx={{ fontWeight: 'bold' }} size='small'>
               Add to Basket
             </Button>
           </div>

@@ -5,9 +5,10 @@ export interface Book {
   image?: string;
   bookName?: string;
   id?: string;
-  isBestSeller?: string;
-  isOnSale?: string;
-  isNewRelease?: string;
+  isBestSeller?: boolean;
+  isOnSale?: boolean;
+  isNewRelease?: boolean;
+  count?: number;
 }
 
 export interface Section {
