@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { makeSelectBasketCount, makeSelectDialogStatus } from '../../master/selector';
 import { useAppSelector } from '../../config/hooks';
 import CDHeader from '../CDHeader';
-import { increaseItem, setDialogStatus } from '../../master/actions';
+import { decreaseItem, increaseItem, setDialogStatus } from '../../master/actions';
 import styles from './style.module.scss';
 import CDInput from '../CDInput';
 import { Book } from '../../types';
@@ -31,6 +31,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     dispatch(increaseItem(id));
   };
 
+  const decreaseCount = (id: any) => {
+    dispatch(decreaseItem(id));
+  };
+
   const sx: SxProps = {
     '& .MuiDialog-container': {
       float: 'right',
@@ -49,13 +53,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <img src={item.image} alt={'item'} />
             <div className={styles.basketContent}>
               <div className={styles.name}>{item.bookName}</div>
-              <div>
-                <div>-</div>
-                <div>{item.count}</div>
-                <div onClick={() => increaseCount(item.id)}>+</div>
-              </div>
-              <div className={styles.s}>
-                <div className={styles.price}>Price: ${item.price}</div>
+              <div className={styles.bottom}>
+                <div className={styles.counter}>
+                  <div className={styles.decButton} onClick={() => decreaseCount(item.id)}>
+                    -
+                  </div>
+                  <div className={styles.count}>{item.count}</div>
+                  <div className={styles.incButton} onClick={() => increaseCount(item.id)}>
+                    +
+                  </div>
+                </div>
+                <div className={styles.s}>
+                  <div className={styles.price}>
+                    Price: ${item.count ? item.count * Number(item.price) : 0}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

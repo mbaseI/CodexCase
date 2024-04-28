@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { ADD_TO_BASKET, INCREASE_ITEM, SET_DIALOG_STATUS } from './constants';
+import { ADD_TO_BASKET, DECREASE_ITEM, INCREASE_ITEM, SET_DIALOG_STATUS } from './constants';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { Book } from '../types';
@@ -28,7 +28,7 @@ export const initialState: InitialState = {
 const masterReducer = (state = initialState, action: Action) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case ADD_TO_BASKET:
+      case ADD_TO_BASKET: {
         if (draft.basket.some((x) => x.id === action.value.id)) {
           // eslint-disable-next-line prefer-const
           let item = draft.basket.find((y) => y.id === action.value.id);
@@ -39,9 +39,11 @@ const masterReducer = (state = initialState, action: Action) =>
           draft.basket.push({ ...action.value, count: 1 });
         }
         break;
-      case SET_DIALOG_STATUS:
+      }
+      case SET_DIALOG_STATUS: {
         draft.dialogStatus = action.value;
         break;
+      }
       case INCREASE_ITEM: {
         const index = draft.basket.findIndex((y) => y.id === action.id);
         if (index !== -1) {
@@ -51,6 +53,18 @@ const masterReducer = (state = initialState, action: Action) =>
         }
         break;
       }
+      case DECREASE_ITEM:
+        {
+          const index = draft.basket.findIndex((y) => y.id === action.id);
+          if (index !== -1) {
+            // eslint-disable-next-line prefer-const
+            let basketItem = draft.basket[index];
+            if (typeof basketItem.count === 'number') basketItem.count--;
+            if (typeof basketItem.count === 'number' && basketItem.count < 1)
+              draft.basket.splice(index, 1);
+          }
+        }
+        break;
       default:
         break;
     }
