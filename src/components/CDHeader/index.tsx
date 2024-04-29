@@ -1,15 +1,39 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { AppBar, Badge, Box, Grid, IconButton, Toolbar } from '@mui/material';
 import Basket from '@mui/icons-material/ShoppingBasket';
 import Logo from '../../assets/svg/logo.svg';
+import CDResult from '../CDResult';
 import CDInput from '../CDInput';
-import React from 'react';
+import styles from './style.module.scss';
+import { Book } from '../../types';
 
 type CDHeaderProps = {
   basketCount: number;
   openDialog: () => void;
+  onChange: (text: string) => void;
+  results: Book[];
 };
 
-const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog }) => {
+const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, results }) => {
+  const [resultsVisibility, setResultsVisibility] = useState(true);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setResultsVisibility(false);
+      } else {
+        setResultsVisibility(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
       <AppBar color={'warning'} position={'fixed'}>
@@ -23,13 +47,29 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog }) => {
               </IconButton>
             </Grid>
             <Grid item xs={4} alignItems={'center'} display={'flex'}>
-              <CDInput
-                color={'primary'}
-                fullWidth
-                label={'Search'}
-                variant={'outlined'}
-                size={'small'}
-              />
+              <div ref={wrapperRef} className={styles.inputSection}>
+                <CDInput
+                  onChange={(e) => onChange(e.target.value)}
+                  color={'primary'}
+                  fullWidth
+                  label={'Search'}
+                  variant={'outlined'}
+                  size={'small'}
+                />
+                {resultsVisibility && (
+                  <div className={styles.resultSection}>
+                    {results.map((item: Book) => (
+                      <CDResult
+                        key={item.id}
+                        author={item.author}
+                        bookName={item.bookName}
+                        price={item.price}
+                        image={item.image}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </Grid>
             <Grid item xs={4} alignItems={'center'} display={'flex'} justifyContent={'center'}>
               <IconButton

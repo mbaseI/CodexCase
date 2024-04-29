@@ -11,6 +11,7 @@ import Layout from '../../components/Layout';
 import CDCard from '../../components/CDCard';
 import CDSectionList from '../../components/CDSectionList';
 import { addToBasket } from '../../master/actions';
+import { toast } from 'react-toastify';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -75,6 +76,8 @@ const Home = () => {
   };
 
   const addToBasketClick = (item: Book) => {
+    const notify = () => toast('Product Added');
+    notify();
     dispatch(addToBasket(item));
   };
 

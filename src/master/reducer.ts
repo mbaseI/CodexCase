@@ -1,5 +1,11 @@
 import { produce } from 'immer';
-import { ADD_TO_BASKET, DECREASE_ITEM, INCREASE_ITEM, SET_DIALOG_STATUS } from './constants';
+import {
+  ADD_TO_BASKET,
+  DECREASE_ITEM,
+  INCREASE_ITEM,
+  SET_DIALOG_STATUS,
+  SEARCH_FILTER,
+} from './constants';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { Book } from '../types';
@@ -7,12 +13,13 @@ import { Book } from '../types';
 const persistConfig = {
   key: 'Master',
   storage: storage,
-  whiteList: ['basket'],
+  blackList: ['searchFilter', 'dialogStatus'],
 };
 
 interface InitialState {
   basket: Book[];
   dialogStatus: boolean;
+  searchFilter: Book[];
 }
 
 interface Action {
@@ -23,6 +30,7 @@ interface Action {
 export const initialState: InitialState = {
   basket: [],
   dialogStatus: false,
+  searchFilter: [],
 };
 
 const masterReducer = (state = initialState, action: Action) =>
@@ -64,6 +72,9 @@ const masterReducer = (state = initialState, action: Action) =>
               draft.basket.splice(index, 1);
           }
         }
+        break;
+      case SEARCH_FILTER:
+        draft.searchFilter = action.data.slice(0, 3);
         break;
       default:
         break;

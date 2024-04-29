@@ -10,4 +10,20 @@ const makeSelectBasketCount = () => createSelector(selectMaster, (subState) => s
 const makeSelectDialogStatus = () =>
   createSelector(selectMaster, (subState) => subState.dialogStatus);
 
-export { makeSelectMaster, makeSelectBasketCount, makeSelectDialogStatus };
+const makeSelectBasketPrice = () =>
+  createSelector(selectMaster, (subState) => {
+    return subState.basket?.reduce((accumulator: any, object: any) => {
+      return accumulator + object.price * object.count;
+    }, 0);
+  });
+
+const makeSelectFilteredItems = () =>
+  createSelector(selectMaster, (subState) => subState.searchFilter);
+
+export {
+  makeSelectMaster,
+  makeSelectBasketCount,
+  makeSelectDialogStatus,
+  makeSelectBasketPrice,
+  makeSelectFilteredItems,
+};

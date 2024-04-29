@@ -1,13 +1,5 @@
 import { produce } from 'immer';
 import { SET_ALL_BOOKS, SET_LOADING } from './constants';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
-
-const persistConfig = {
-  key: 'Home',
-  storage: storage,
-  blacklist: ['products', 'loading', 'sectionFilteredBooks'],
-};
 
 export const initialState = {
   products: [],
@@ -29,4 +21,4 @@ const homeReducer = (state = initialState, action: { type: string; values: any }
     }
   });
 
-export default persistReducer(persistConfig, homeReducer);
+export default homeReducer;
