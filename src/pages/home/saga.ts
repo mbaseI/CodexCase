@@ -1,4 +1,4 @@
-import { delay, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { setAllBooks, setLoading } from './actions';
 import { GET_ALL_BOOKS } from './constants';
 import ApiStore from '../../request';
@@ -11,7 +11,7 @@ export interface ResponseGenerator {
 function* getAllBooksSaga() {
   try {
     const response: ResponseGenerator = yield ApiStore.books.get('');
-    yield delay(1000); // For Skeleton Test
+    yield put(setLoading(true));
     yield put(setAllBooks(response.data));
     yield put(setLoading(false));
   } catch (e) {

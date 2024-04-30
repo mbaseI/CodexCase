@@ -6,17 +6,17 @@ import {
   SET_DIALOG_STATUS,
   SEARCH_FILTER,
 } from './constants';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
 import { Book } from '../types';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
   key: 'Master',
   storage: storage,
-  blackList: ['searchFilter', 'dialogStatus'],
+  blacklist: ['searchFilter', 'dialogStatus'],
 };
 
-interface InitialState {
+export interface InitialState {
   basket: Book[];
   dialogStatus: boolean;
   searchFilter: Book[];

@@ -79,30 +79,26 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* //Basket Content */}
       <Dialog onClose={handleClose} fullScreen open={dialogStatus} sx={sx}>
         {basket?.map((item: Book) => (
-          <>
-            <div key={item.id} className={styles.basket}>
-              <img src={item.image} alt={'item'} />
-              <div className={styles.basketItemContent}>
-                <div className={styles.name}>{item.bookName}</div>
-                <div className={styles.bottom}>
-                  <div className={styles.counter}>
-                    <div className={styles.decButton} onClick={() => _decreaseItem(item.id)}>
-                      -
-                    </div>
-                    <div className={styles.count}>{item.count}</div>
-                    <div className={styles.incButton} onClick={() => _increaseItem(item.id)}>
-                      +
-                    </div>
+          <div key={item.id} className={styles.basket}>
+            <img src={item.image} alt={'item'} />
+            <div className={styles.basketItemContent}>
+              <div>{item.bookName}</div>
+              <div className={styles.bottom}>
+                <div className={styles.counter}>
+                  <div className={styles.decButton} onClick={() => _decreaseItem(item.id)}>
+                    -
                   </div>
-                  <div className={styles.s}>
-                    <div className={styles.price}>
-                      Price: ${item.count ? item.count * Number(item.price) : 15}
-                    </div>
+                  <div className={styles.count}>{item.count}</div>
+                  <div className={styles.incButton} onClick={() => _increaseItem(item.id)}>
+                    +
                   </div>
+                </div>
+                <div className={styles.s}>
+                  <div>Price: ${item.count ? item.count * Number(item.price) : 15}</div>
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
         {!basket.length ? (
           <div className={styles.noItem}>There are no items in your cart</div>

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { InitialState, initialState } from './reducer';
 
-const selectMaster = (state: { master: any }) => state.master || initialState;
+const selectMaster = (state: { master: InitialState }) => state.master || initialState;
 
 const makeSelectMaster = () => createSelector(selectMaster, (subState) => subState);
 

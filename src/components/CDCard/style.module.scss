@@ -27,17 +27,20 @@
     opacity: 1;
     transition: opacity 0.3s;
   }
+  div {
+    color: black;
+  }
   .name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 0.35rem;
   }
   .description {
     min-height: 50px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 600;
   }
   .action {
     display: flex;
@@ -60,17 +63,11 @@
     margin-inline: auto;
     opacity: 0;
     transition: opacity 2s 2s;
-    span {
-      font-weight: 600;
-    }
     button {
       &:hover {
         background-color: rgb(216, 99, 3);
       }
     }
-  }
-  .price {
-    font-weight: 600;
   }
 }
 

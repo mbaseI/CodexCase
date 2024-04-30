@@ -6,6 +6,7 @@ import CDResult from '../CDResult';
 import CDInput from '../CDInput';
 import styles from './style.module.scss';
 import { Book } from '../../types';
+import { useLocation } from 'react-router-dom';
 
 type CDHeaderProps = {
   basketCount: number;
@@ -17,6 +18,7 @@ type CDHeaderProps = {
 const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, results }) => {
   const [resultsVisibility, setResultsVisibility] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,7 +34,11 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [location]);
+
+  useEffect(() => {
+    setResultsVisibility(false);
+  }, [location]);
 
   return (
     <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
@@ -60,6 +66,7 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, 
                   <div className={styles.resultSection}>
                     {results.map((item: Book) => (
                       <CDResult
+                        id={item.id}
                         key={item.id}
                         author={item.author}
                         bookName={item.bookName}

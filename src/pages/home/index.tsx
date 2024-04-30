@@ -120,6 +120,7 @@ const Home = () => {
             {data?.map((item: Book) => (
               <div key={2} className={styles.cardWrapper}>
                 <CDCard
+                  id={item.id}
                   onButtonClick={() => addToBasketClick(item)}
                   bookName={item.bookName}
                   image={item.image}
