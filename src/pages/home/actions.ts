@@ -1,15 +1,15 @@
 import { Book } from '../../types';
-import { GET_ALL_BOOKS, SET_ALL_BOOKS, SET_LOADING } from './constants';
+import { GET_BOOKS, SET_BOOKS, SET_LOADING } from './constants';
 
-export function getAllBooks() {
+export function getBooks() {
   return {
-    type: GET_ALL_BOOKS,
+    type: GET_BOOKS,
   };
 }
 
-export function setAllBooks(values: Book[]) {
+export function setBooks(values: Book[]) {
   return {
-    type: SET_ALL_BOOKS,
+    type: SET_BOOKS,
     values,
   };
 }

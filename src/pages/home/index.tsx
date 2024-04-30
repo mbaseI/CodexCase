@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllBooks, setLoading } from './actions';
+import { getBooks, setLoading } from './actions';
 import { makeSelectBooks, makeSelectLoading } from './selector';
 import { useDispatch } from 'react-redux';
 import { Skeleton } from '@mui/material';
@@ -93,7 +93,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllBooks());
+    dispatch(getBooks());
   }, [dispatch]);
 
   return (

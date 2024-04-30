@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { SET_ALL_BOOKS, SET_LOADING } from './constants';
+import { SET_BOOKS, SET_LOADING } from './constants';
 import { Book } from '../../types';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
@@ -25,7 +25,7 @@ export const initialState = {
 const homeReducer = (state = initialState, action: { type: string; values: any }) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case SET_ALL_BOOKS:
+      case SET_BOOKS:
         draft.products = action.values;
         break;
       case SET_LOADING:
