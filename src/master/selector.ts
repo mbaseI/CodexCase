@@ -12,7 +12,7 @@ const makeSelectDialogStatus = () =>
 
 const makeSelectBasketPrice = () =>
   createSelector(selectMaster, (subState) => {
-    return subState.basket?.reduce((accumulator: any, object: any) => {
+    return subState.basket?.reduce((accumulator: number, object: any) => {
       return accumulator + object.price * object.count;
     }, 0);
   });

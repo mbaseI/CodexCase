@@ -22,7 +22,12 @@ export const initialState = {
   loading: true,
 };
 
-const homeReducer = (state = initialState, action: { type: string; values: any }) =>
+interface Action {
+  type: string;
+  [key: string | number]: any;
+}
+
+const homeReducer = (state = initialState, action: Action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case SET_BOOKS:
