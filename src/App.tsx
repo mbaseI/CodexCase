@@ -10,7 +10,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/detail/:id' element={<Detail />} />
+          <Route path='/detail/:bookName/:id' element={<Detail />} />
           <Route path='*' element={<div>asdasdas</div>} />
         </Routes>
         <ToastContainer autoClose={1000} limit={3} />

@@ -63,7 +63,7 @@
   }
 }
 
-.checkout {
+.basketCheckout {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,3 +76,27 @@
 .noItem {
   padding: 10px;
 }
+
+//checkout.tsx
+.checkout {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  .x {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .y{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .form {
+    margin-top: 30px;
+  }
+  .button {
+      margin-top: 30px;
+    }
+}
+

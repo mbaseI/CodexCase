@@ -20,7 +20,7 @@ const CDCard: React.FC<CDCardProps> = ({
   return (
     <>
       <Card className={styles.card}>
-        <Link style={{ textDecoration: 'none' }} to={`/detail/${id}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/detail/${bookName}/${id}`}>
           <CardContent>
             <CardMedia component={'img'} alt={'book'} height={'180'} image={image} />
             <Typography className={styles.name} gutterBottom variant={'h6'} component={'div'}>

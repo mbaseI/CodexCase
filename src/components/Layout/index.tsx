@@ -13,6 +13,8 @@ import { decreaseItem, increaseItem, searchFilter, setDialogStatus } from '../..
 import styles from './style.module.scss';
 import { Book } from '../../types';
 import { makeSelectBooks } from '../../pages/home/selector';
+import BasketItem from './basketItem';
+import Checkout from './checkout';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -79,37 +81,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* //Basket Content */}
       <Dialog onClose={handleClose} fullScreen open={dialogStatus} sx={sx}>
         {basket?.map((item: Book) => (
-          <div key={item.id} className={styles.basket}>
-            <img src={item.image} alt={'item'} />
-            <div className={styles.basketItemContent}>
-              <div>{item.bookName}</div>
-              <div className={styles.bottom}>
-                <div className={styles.counter}>
-                  <div className={styles.decButton} onClick={() => _decreaseItem(item.id)}>
-                    -
-                  </div>
-                  <div className={styles.count}>{item.count}</div>
-                  <div className={styles.incButton} onClick={() => _increaseItem(item.id)}>
-                    +
-                  </div>
-                </div>
-                <div className={styles.s}>
-                  <div>Price: ${item.count ? item.count * Number(item.price) : 15}</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <BasketItem
+            key={item.id}
+            decreaseClick={_decreaseItem}
+            increaseClick={_increaseItem}
+            bookName={item.bookName}
+            image={item.image}
+            count={item.count}
+            price={item.price}
+            id={item.id}
+          />
         ))}
         {!basket.length ? (
           <div className={styles.noItem}>There are no items in your cart</div>
         ) : (
-          <div className={styles.checkout}>
+          <div className={styles.basketCheckout}>
             <Button variant='contained'>Checkout</Button>
             <div className={styles.price}>Total Price: ${totalPrice}</div>
           </div>
         )}
-        {/* //Basket Content End */}
       </Dialog>
+      {/* //Basket Content End */}
+      <Checkout />
       <Container maxWidth={'lg'}>{children}</Container>
     </>
   );

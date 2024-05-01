@@ -4,7 +4,11 @@ import styles from './style.module.scss';
 
 const CDResult: React.FC<Book> = ({ author, bookName, price, image, id }) => {
   return (
-    <Link reloadDocument style={{ textDecoration: 'none' }} to={{ pathname: `/detail/${id}` }}>
+    <Link
+      reloadDocument
+      style={{ textDecoration: 'none' }}
+      to={{ pathname: `/detail/${bookName}/${id}` }}
+    >
       <div className={styles.result}>
         <div className={styles.leftSecion}>
           <img src={image} alt={'item'} />

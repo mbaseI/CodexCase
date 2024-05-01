@@ -44,7 +44,7 @@ const Detail = () => {
                 </div>
                 <div>{book.description}</div>
                 <div className={styles.z}>
-                  <Button variant='contained'>Checkout</Button>
+                  <Button variant='contained'>Add To Basket</Button>
                   <div>${book.price}</div>
                 </div>
               </div>
