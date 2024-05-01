@@ -1,4 +1,3 @@
-import { Button, Container, Dialog, SxProps } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -6,10 +5,18 @@ import {
   makeSelectBasketPrice,
   makeSelectDialogStatus,
   makeSelectFilteredItems,
+  makeSelectModal,
 } from '../../master/selector';
+import {
+  decreaseItem,
+  increaseItem,
+  searchFilter,
+  setDialogStatus,
+  setModal,
+} from '../../master/actions';
+import { Button, Container, Dialog, SxProps } from '@mui/material';
 import { useAppSelector } from '../../config/hooks';
 import CDHeader from '../CDHeader';
-import { decreaseItem, increaseItem, searchFilter, setDialogStatus } from '../../master/actions';
 import styles from './style.module.scss';
 import { Book } from '../../types';
 import { makeSelectBooks } from '../../pages/home/selector';
@@ -25,15 +32,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const basket = useAppSelector(makeSelectBasketCount());
   const booksData = useAppSelector(makeSelectBooks());
-  const dialogStatus = useAppSelector(makeSelectDialogStatus());
   const totalPrice = useAppSelector(makeSelectBasketPrice());
-  const results = useAppSelector(makeSelectFilteredItems());
+  //
+  const dialogStatus = useAppSelector(makeSelectDialogStatus());
+  const modalStatus = useAppSelector(makeSelectModal());
+  //
+  const searchResults = useAppSelector(makeSelectFilteredItems());
 
   const handleClickOpen = () => {
     dispatch(setDialogStatus(true));
   };
 
-  const handleClose = () => {
+  const handleCloseDialog = () => {
     dispatch(setDialogStatus(false));
   };
 
@@ -43,6 +53,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const _decreaseItem = (id: any) => {
     dispatch(decreaseItem(id));
+  };
+
+  const handleModal = (id: string, isOpen: boolean) => {
+    dispatch(setModal(id, isOpen));
   };
 
   const _searchFilter = (text: string) => {
@@ -73,13 +87,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <CDHeader
-        results={results}
+        results={searchResults}
         onChange={(text) => _searchFilter(text)}
         openDialog={handleClickOpen}
         basketCount={basketCount()}
       />
       {/* //Basket Content */}
-      <Dialog onClose={handleClose} fullScreen open={dialogStatus} sx={sx}>
+      <Dialog onClose={handleCloseDialog} fullScreen open={dialogStatus} sx={sx}>
         {basket?.map((item: Book) => (
           <BasketItem
             key={item.id}
@@ -96,13 +110,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className={styles.noItem}>There are no items in your cart</div>
         ) : (
           <div className={styles.basketCheckout}>
-            <Button variant='contained'>Checkout</Button>
+            <Button onClick={() => handleModal('Checkout', true)} variant='contained'>
+              Checkout
+            </Button>
             <div className={styles.price}>Total Price: ${totalPrice}</div>
           </div>
         )}
       </Dialog>
       {/* //Basket Content End */}
-      <Checkout />
+      <Checkout open={modalStatus.isOpen} handleClose={() => handleModal('Checkout', false)} />
       <Container maxWidth={'lg'}>{children}</Container>
     </>
   );

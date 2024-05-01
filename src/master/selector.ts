@@ -20,10 +20,13 @@ const makeSelectBasketPrice = () =>
 const makeSelectFilteredItems = () =>
   createSelector(selectMaster, (subState) => subState.searchFilter);
 
+const makeSelectModal = () => createSelector(selectMaster, (subState) => subState.activeModal);
+
 export {
   makeSelectMaster,
   makeSelectBasketCount,
   makeSelectDialogStatus,
   makeSelectBasketPrice,
   makeSelectFilteredItems,
+  makeSelectModal,
 };

@@ -5,6 +5,7 @@ import {
   INCREASE_ITEM,
   SET_DIALOG_STATUS,
   SEARCH_FILTER,
+  SET_MODAL,
 } from './constants';
 
 export function addToBasket(value: Book) {
@@ -39,5 +40,13 @@ export function searchFilter(data: Book[]) {
   return {
     type: SEARCH_FILTER,
     data,
+  };
+}
+
+export function setModal(id: string, isOpen: boolean) {
+  return {
+    type: SET_MODAL,
+    id,
+    isOpen,
   };
 }

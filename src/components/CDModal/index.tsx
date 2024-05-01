@@ -1,6 +1,6 @@
 import { Box, Modal } from '@mui/material';
 
-type CDModalProps = {
+export type CDModalProps = {
   open: boolean;
   children: React.ReactNode;
   onClose?: () => void;

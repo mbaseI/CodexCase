@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import CDModal from '../CDModal';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import styles from './style.module.scss';
 import Cards, { Focused } from 'react-credit-cards-2';
 import CDInput from '../CDInput';
@@ -15,7 +16,13 @@ const initialValues = {
   focus: '',
 };
 
-const Checkout = () => {
+type CheckoutProps = {
+  handleClose?: () => void;
+  handleOpen?: () => void;
+  open?: boolean;
+};
+
+const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
   const [focus, setFocus] = React.useState<Focused>('');
 
   const handleInputFocus = (e: any) => {
@@ -27,11 +34,13 @@ const Checkout = () => {
   };
 
   return (
-    <CDModal open={true}>
+    <CDModal onClose={handleClose} open={open!}>
       <div className={styles.checkout}>
-        <div className={styles.x}>
-          <span>Total</span>
-          <span>$7784</span>
+        <div className={styles.information}>
+          <span>Total Price: $7784</span>
+          <IconButton onClick={handleClose} size={'large'} color={'inherit'}>
+            <HighlightOffIcon />
+          </IconButton>
         </div>
 
         <Formik

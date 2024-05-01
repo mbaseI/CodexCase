@@ -5,6 +5,7 @@ import {
   INCREASE_ITEM,
   SET_DIALOG_STATUS,
   SEARCH_FILTER,
+  SET_MODAL,
 } from './constants';
 import { Book } from '../types';
 import { persistReducer } from 'redux-persist';
@@ -20,6 +21,10 @@ export interface InitialState {
   basket: Book[];
   dialogStatus: boolean;
   searchFilter: Book[];
+  activeModal: {
+    id: string;
+    isOpen: boolean;
+  };
 }
 
 interface Action {
@@ -31,6 +36,10 @@ export const initialState: InitialState = {
   basket: [],
   dialogStatus: false,
   searchFilter: [],
+  activeModal: {
+    id: '0',
+    isOpen: false,
+  },
 };
 
 const masterReducer = (state = initialState, action: Action) =>
@@ -75,6 +84,12 @@ const masterReducer = (state = initialState, action: Action) =>
         break;
       case SEARCH_FILTER:
         draft.searchFilter = action.data.slice(0, 3);
+        break;
+      case SET_MODAL:
+        draft.activeModal = {
+          id: action.id,
+          isOpen: action.isOpen,
+        };
         break;
       default:
         break;
