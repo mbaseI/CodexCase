@@ -7,6 +7,9 @@ import Cards, { Focused } from 'react-credit-cards-2';
 import CDInput from '../CDInput';
 import { Formik } from 'formik';
 import CheckoutSchema from '../../validations/chekout';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { setBasket } from '../../master/actions';
 
 const initialValues = {
   number: '',
@@ -23,6 +26,7 @@ type CheckoutProps = {
 };
 
 const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
+  const dispatch = useDispatch();
   const [focus, setFocus] = React.useState<Focused>('');
 
   const handleInputFocus = (e: any) => {
@@ -46,9 +50,14 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
         <Formik
           initialValues={initialValues}
           validationSchema={CheckoutSchema}
-          onSubmit={() => console.log('asd')}
+          onSubmit={() => {
+            const notify = () => toast('Product Your order has been received');
+            notify();
+            handleClose && handleClose();
+            dispatch(setBasket([]));
+          }}
         >
-          {({ values, errors, isValid, handleChange, handleSubmit }) => (
+          {({ values, errors, touched, handleBlur, isValid, handleChange, handleSubmit }) => (
             <div>
               <Cards
                 number={values.number}
@@ -69,6 +78,8 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
                   errors={errors.name}
                   sx={{ minHeight: '80px' }}
                   required
+                  touched={touched.name}
+                  onBlurCapture={handleBlur}
                 />
                 <CDInput
                   label={'Number'}
@@ -84,6 +95,8 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
                   errors={errors.number}
                   sx={{ minHeight: '80px' }}
                   required
+                  touched={touched.number}
+                  onBlurCapture={handleBlur}
                 />
                 <CDInput
                   label={'CVC'}
@@ -99,6 +112,8 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
                   errors={errors.cvc}
                   sx={{ minHeight: '80px' }}
                   required
+                  touched={touched.cvc}
+                  onBlurCapture={handleBlur}
                 />
                 <CDInput
                   label={'Expiry'}
@@ -114,6 +129,8 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
                   errors={errors.expiry}
                   sx={{ minHeight: '80px' }}
                   required
+                  touched={touched.expiry}
+                  onBlurCapture={handleBlur}
                 />
               </div>
               <Button

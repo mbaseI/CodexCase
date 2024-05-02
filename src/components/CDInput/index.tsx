@@ -20,6 +20,8 @@ type CDInputProps = {
   helperText?: React.ReactNode;
   onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   required?: boolean;
+  touched?: boolean;
+  onBlurCapture?: React.FocusEventHandler<HTMLDivElement>;
 };
 
 const CDInput: React.FC<CDInputProps> = ({ ...props }) => {
@@ -42,9 +44,10 @@ const CDInput: React.FC<CDInputProps> = ({ ...props }) => {
       type={props.type}
       sx={props.sx}
       onInput={props.onInput}
-      helperText={props.errors}
+      helperText={props.value && props.errors}
       onBlur={props.onBlur}
       required={props.required}
+      onBlurCapture={props.onBlurCapture}
     />
   );
 };

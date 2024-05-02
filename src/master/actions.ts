@@ -1,6 +1,6 @@
 import { Book } from '../types';
 import {
-  ADD_TO_BASKET,
+  SET_BASKET,
   DECREASE_ITEM,
   INCREASE_ITEM,
   SET_DIALOG_STATUS,
@@ -8,9 +8,9 @@ import {
   SET_MODAL,
 } from './constants';
 
-export function addToBasket(value: Book) {
+export function setBasket(value: Book | []) {
   return {
-    type: ADD_TO_BASKET,
+    type: SET_BASKET,
     value,
   };
 }

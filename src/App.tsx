@@ -11,7 +11,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/detail/:bookName/:id' element={<Detail />} />
-          <Route path='*' element={<div>asdasdas</div>} />
+          <Route path='*' element={<div>Sorry, that page does not exist</div>} />
         </Routes>
         <ToastContainer autoClose={1000} limit={3} />
       </BrowserRouter>

@@ -7,6 +7,9 @@ import { getBook } from './actions';
 import styles from './style.module.scss';
 import { makeSelectBookDetail, makeSelectLoading } from './selector';
 import { useParams } from 'react-router-dom';
+import { Book } from '../../types';
+import { toast } from 'react-toastify';
+import { setBasket } from '../../master/actions';
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -17,6 +20,12 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getBook(id as string));
   }, []);
+
+  const addToBasketClick = (item: Book) => {
+    const notify = () => toast('Product Added');
+    notify();
+    dispatch(setBasket(item));
+  };
 
   return (
     <Layout>
@@ -44,7 +53,9 @@ const Detail = () => {
                 </div>
                 <div>{book.description}</div>
                 <div className={styles.z}>
-                  <Button variant='contained'>Add To Basket</Button>
+                  <Button onClick={() => addToBasketClick(book)} variant='contained'>
+                    Add To Basket
+                  </Button>
                   <div>${book.price}</div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import {
-  ADD_TO_BASKET,
+  SET_BASKET,
   DECREASE_ITEM,
   INCREASE_ITEM,
   SET_DIALOG_STATUS,
@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'Master',
   storage: storage,
-  blacklist: ['searchFilter', 'dialogStatus'],
+  blacklist: ['searchFilter', 'dialogStatus', 'activeModal'],
 };
 
 export interface InitialState {
@@ -22,8 +22,8 @@ export interface InitialState {
   dialogStatus: boolean;
   searchFilter: Book[];
   activeModal: {
-    id: string;
-    isOpen: boolean;
+    id?: string;
+    isOpen?: boolean;
   };
 }
 
@@ -36,16 +36,13 @@ export const initialState: InitialState = {
   basket: [],
   dialogStatus: false,
   searchFilter: [],
-  activeModal: {
-    id: '0',
-    isOpen: false,
-  },
+  activeModal: {},
 };
 
 const masterReducer = (state = initialState, action: Action) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case ADD_TO_BASKET: {
+      case SET_BASKET: {
         if (draft.basket.some((x) => x.id === action.value.id)) {
           // eslint-disable-next-line prefer-const
           let item = draft.basket.find((y) => y.id === action.value.id);
@@ -55,6 +52,7 @@ const masterReducer = (state = initialState, action: Action) =>
         } else {
           draft.basket.push({ ...action.value, count: 1 });
         }
+        if (Array.isArray(action.value) && !action.value.length) draft.basket = [];
         break;
       }
       case SET_DIALOG_STATUS: {
@@ -90,6 +88,8 @@ const masterReducer = (state = initialState, action: Action) =>
           id: action.id,
           isOpen: action.isOpen,
         };
+        if (draft.activeModal.id === 'Checkout') draft.dialogStatus = false;
+        if (!draft.activeModal.isOpen) draft.activeModal = {};
         break;
       default:
         break;

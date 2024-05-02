@@ -10,7 +10,7 @@ import { useAppSelector } from '../../config/hooks';
 import Layout from '../../components/Layout';
 import CDCard from '../../components/CDCard';
 import CDSectionList from '../../components/CDSectionList';
-import { addToBasket } from '../../master/actions';
+import { setBasket } from '../../master/actions';
 import { toast } from 'react-toastify';
 
 const Home = () => {
@@ -78,7 +78,7 @@ const Home = () => {
   const addToBasketClick = (item: Book) => {
     const notify = () => toast('Product Added');
     notify();
-    dispatch(addToBasket(item));
+    dispatch(setBasket(item));
   };
 
   let data = booksData?.filter((item: Book) => item[section]);
