@@ -7,7 +7,7 @@ const CDResult: React.FC<Book> = ({ ...props }) => {
     <Link
       reloadDocument
       style={{ textDecoration: 'none' }}
-      to={{ pathname: `/detail/${props.bookName}/${props.id}` }}
+      to={`/detail/${props.bookName}/${props.id}`}
     >
       <div className={styles.result}>
         <div className={styles.leftSecion}>
