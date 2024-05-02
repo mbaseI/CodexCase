@@ -2,14 +2,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 import ApiStore from '../../request';
 import { setBook, setLoading } from './actions';
 import { GET_BOOK } from './constants';
-import { Book } from '../../types';
+import { Action, Book } from '../../types';
 
 export interface ResponseGenerator {
   data: Book[];
 }
 
-function* getBookSaga(action: any) {
+function* getBookSaga(action: Action) {
   try {
+    console.log(action);
     const response: ResponseGenerator = yield ApiStore.books.get(action.id);
     yield put(setLoading(true));
     yield put(setBook(response.data));

@@ -20,7 +20,7 @@ const style = {
 
 const CDModal: React.FC<CDModalProps> = ({ ...props }) => {
   return (
-    <Modal onClose={props.onClose} open={props.open}>
+    <Modal onClose={props.onClose} open={props.open || false}>
       <Box sx={style}>{props.children}</Box>
     </Modal>
   );

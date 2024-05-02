@@ -1,15 +1,10 @@
 import { produce } from 'immer';
 import { SET_BOOK, SET_LOADING } from './constants';
-import { Book } from '../../types';
+import { Action, Book } from '../../types';
 
 export interface InitialState {
   book: Book;
   loading: boolean;
-}
-
-interface Action {
-  type: string;
-  [key: string | number]: any;
 }
 
 export const initialState: InitialState = {

@@ -15,3 +15,8 @@ export interface Section {
   value: string;
   label: string;
 }
+
+export interface Action {
+  type: string;
+  [key: string | number]: any;
+}

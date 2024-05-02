@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import { SET_BOOKS, SET_LOADING } from './constants';
-import { Book } from '../../types';
+import { Action, Book } from '../../types';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
@@ -21,11 +21,6 @@ export const initialState = {
   sectionFilteredBooks: [],
   loading: true,
 };
-
-interface Action {
-  type: string;
-  [key: string | number]: any;
-}
 
 const homeReducer = (state = initialState, action: Action) =>
   produce(state, (draft) => {

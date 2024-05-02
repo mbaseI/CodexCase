@@ -7,7 +7,7 @@ import {
   SEARCH_FILTER,
   SET_MODAL,
 } from './constants';
-import { Book } from '../types';
+import { Action, Book } from '../types';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -25,11 +25,6 @@ export interface InitialState {
     id?: string;
     isOpen?: boolean;
   };
-}
-
-interface Action {
-  type: string;
-  [key: string | number]: any;
 }
 
 export const initialState: InitialState = {

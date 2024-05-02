@@ -47,11 +47,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     dispatch(setDialogStatus(false));
   };
 
-  const _increaseItem = (id: any) => {
+  const _increaseItem = (id: keyof Book) => {
+    console.log(id);
     dispatch(increaseItem(id));
   };
 
-  const _decreaseItem = (id: any) => {
+  const _decreaseItem = (id: keyof Book) => {
     dispatch(decreaseItem(id));
   };
 
