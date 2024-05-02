@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+# CODEXCASE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+`codex-case` is a React project utilizing the Atomic Design methodology for its architecture. It aims to provide a structured and scalable approach to building user interfaces.
+
+## Installation
+
+To get started with `codex-case`, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- `npm start`: Runs the app in the development mode.
+- `npm test`: Launches the test runner.
+- `npm run build`: Builds the app for production to the `build` folder.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### React & Related Libraries
 
-### `npm test`
+- `react`: JavaScript library for building user interfaces.
+- `react-dom`: Provides DOM-specific methods.
+- `react-router-dom`: Declarative routing for React.
+- `@emotion/react`, `@emotion/styled`: CSS-in-JS library for styling React components.
+- `framer-motion`: Animation library for React.
+- `formik`, `yup`: Form handling and validation utilities.
+- `react-toastify`: Notification library for React.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### UI Frameworks & Components
 
-### `npm run build`
+- `@mui/material`, `@mui/icons-material`: Material-UI components for React.
+- `react-slick`, `slick-carousel`: Carousel/slider components for React.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### State Management & Middleware
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `react-redux`: Official React bindings for Redux.
+- `@reduxjs/toolkit`: Utility functions for Redux.
+- `redux-persist`: Persist and rehydrate a Redux store.
+- `redux-saga`: Library for managing side effects in Redux.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### HTTP Requests
 
-### `npm run eject`
+- `axios`: Promise-based HTTP client.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Testing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`: Testing utilities for React components.
+- `jest`, `ts-jest`, `jest-css-modules-transform`: Testing framework and utilities.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Other
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `dotenv`: Loads environment variables from a `.env` file.
+- `immer`: Library for creating the next immutable state tree.
 
-## Learn More
+## Development Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `typescript`: Typed superset of JavaScript.
+- `sass`, `sass-loader`: CSS extension language.
+- `eslint`, `eslint-config-prettier`, `eslint-plugin-prettier`: JavaScript linter and Prettier integration.
+- `babel`: JavaScript compiler.
+- `css-loader`: CSS loader module for webpack.
+- `jest-environment-jsdom`: Jest environment for browser-like testing.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Browser Support
+
+The project supports the following browsers:
+
+- Production: >0.2%, not dead, not op_mini all
+- Development: last 1 chrome version, last 1 firefox version, last 1 safari version
+
+## Contributing
+
+Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
