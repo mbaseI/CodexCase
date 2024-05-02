@@ -20,6 +20,14 @@ In the project directory, you can run:
 - `npm test`: Launches the test runner.
 - `npm run build`: Builds the app for production to the `build` folder.
 
+## Node Version
+
+This project has been tested with the following versions of Node.js:
+
+- Node.js v20.12.2
+
+A Node.js version equal to or newer than the one listed above is required for the project to function properly.
+
 ## Dependencies
 
 ### React & Related Libraries
