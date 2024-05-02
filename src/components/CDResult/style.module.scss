@@ -1,3 +1,5 @@
+@import '../../_variables.scss';
+
 .result {
   width: 100%;
   cursor: pointer;
@@ -6,10 +8,10 @@
   align-items: center;
   justify-content: space-between;
   user-select: none;
-  border-radius: 3px;
+  border-radius: $xsRadius;
   color: white;
   &:hover {
-    background-color: #FFF;
+    background-color: white;
   }
   &:hover div {
     color: black;
@@ -28,10 +30,10 @@
     width: 60px;
     object-fit: cover;
     border: 1px solid black;
-    border-radius: 10px;
-    margin: 0 5px;
+    border-radius: $mdRadius;
+    margin: 0 $smMargin;
   }
   .price {
-    margin-right: 5px;
+    margin-right: $smMargin;
   }
 }

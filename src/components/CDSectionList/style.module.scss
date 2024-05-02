@@ -1,15 +1,17 @@
+@import '../../_variables.scss';
+
 .sectionListWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: $mdMargin;
   .sectionList {
     display: inline-flex;
-    border: 1px solid #ed6c02;
-    border-radius: 10px;
+    border: 1px solid $CDOrange;
+    border-radius: $mdRadius;
     span {
-      border-radius: 8px;
-      padding: 5px 15px;
+      border-radius: $smRadius;
+      padding: $smPadding $mdPadding;
       user-select: none;
       cursor: pointer;
       &:hover {
@@ -17,7 +19,7 @@
       }
     }
     .selected {
-      background-color: #ed6c02 !important;
+      background-color: $CDOrange !important;
     }
   }
 
@@ -25,6 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-right: $mdMargin;
   }
 }

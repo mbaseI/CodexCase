@@ -1,12 +1,14 @@
+@import '../../_variables.scss';
+
 .inputSection {
   width: 100%;
   position: relative;
   .resultSection {
     position: absolute;
     width: 100%;
-    margin-top: 5px;
+    margin-top: $smMargin;
     background-color: rgb(169 116 73);
-    border-radius: 3px;
-    border-top-left-radius: 3px;
+    border-radius: $xsRadius;
+    border-top-left-radius: $xsRadius;
   }
 }

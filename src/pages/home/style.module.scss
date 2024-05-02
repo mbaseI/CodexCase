@@ -1,10 +1,12 @@
+@import '../../_variables.scss';
+
 .cardWrapper {
   height: calc(100% + 5px);
   width: unset !important;
 }
 .slide {
   button::before {
-    color: rgba(237, 108, 2, 1);
+    color: $CDOrange;
   }
 }
 

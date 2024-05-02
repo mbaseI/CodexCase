@@ -1,19 +1,21 @@
+@import '../../_variables.scss';
+
 .basket {
   height: 100px;
   display: flex;
   align-items: center;
-  padding: 10px;
-  margin: 0 2px;
+  padding: $mdPadding;
+  margin: 0 $xsMargin;
   border-bottom: 1px solid black;
   img {
     height: 100px;
     width: 100px;
     object-fit: cover;
     border: 1px solid black;
-    border-radius: 30px;
+    border-radius: $xlRadius;
   }
   .basketItemContent {
-    margin-left: 10px;
+    margin-left: $mdMargin;
     width: 100%;
     height: 100%;
     display: flex;
@@ -32,7 +34,7 @@
         .decButton,
         .incButton {
           width: 10px;
-          padding: 2px 6px;
+          padding: $xsPadding $mdPadding;
           cursor: pointer;
           user-select: none;
           display: flex;
@@ -41,24 +43,24 @@
         }
         .decButton {
           background-color: rgb(173, 35, 11);
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
+          border-top-left-radius: $lgRadius;
+          border-bottom-left-radius: $lgRadius;
         }
         .incButton {
           background-color: rgb(4, 133, 4);
-          border-top-right-radius: 20px;
-          border-bottom-right-radius: 20px;
+          border-top-right-radius: $lgRadius;
+          border-bottom-right-radius: $lgRadius;
         }
         .count {
           font-size: 16px;
           text-align: center;
-          padding: 0 6px;
+          padding: 0 $smPadding;
         }
       }
     }
     .button {
       width: 80px;
-      padding: 3px;
+      padding: $xsPadding;
     }
   }
 }
@@ -67,14 +69,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: $mdPadding;
   div {
-    color: rgba(237, 108, 2, 1);
+    color: $CDOrange;
   }
 }
 
 .noItem {
-  padding: 10px;
+  padding: $mdPadding;
 }
 
 //checkout.tsx
@@ -85,16 +87,16 @@
   .information {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: $xlMargin;
     align-items: center;
     span {
       font-weight: 600;
     }
   }
   .form {
-    margin-top: 30px;
+    margin-top: $xlMargin;
   }
   .button {
-    margin-top: 30px;
+    margin-top: $xlMargin;
   }
 }
