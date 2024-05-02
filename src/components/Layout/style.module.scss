@@ -1,12 +1,13 @@
 @import '../../_variables.scss';
 
-.basket {
+.basketItem {
   height: 100px;
   display: flex;
   align-items: center;
   padding: $mdPadding;
   margin: 0 $xsMargin;
   border-bottom: 1px solid black;
+  font-weight:600 ;
   img {
     height: 100px;
     width: 100px;
@@ -42,19 +43,20 @@
           justify-content: center;
         }
         .decButton {
-          background-color: rgb(173, 35, 11);
+          background-color: #860A35;
           border-top-left-radius: $lgRadius;
           border-bottom-left-radius: $lgRadius;
         }
         .incButton {
-          background-color: rgb(4, 133, 4);
+          background-color: #0A6847;
           border-top-right-radius: $lgRadius;
           border-bottom-right-radius: $lgRadius;
         }
         .count {
-          font-size: 16px;
           text-align: center;
           padding: 0 $smPadding;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
         }
       }
     }
@@ -68,11 +70,17 @@
 .basketCheckout {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  height: 100%;
+  align-items: flex-end;
   padding: $mdPadding;
   div {
     color: $CDOrange;
   }
+}
+
+.closeButton {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .noItem {

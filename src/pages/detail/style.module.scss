@@ -6,21 +6,26 @@
   box-shadow: 0px 1px 16px 1px rgba(0, 0, 0, 0.64);
   -webkit-box-shadow: 0px 1px 16px 1px rgba(0, 0, 0, 0.64);
   -moz-box-shadow: 0px 1px 16px 1px rgba(0, 0, 0, 0.64);
+  text-align: start;
+  @media only screen and (max-width: 840px) {
+    font-size: 14px;
+  }
   img {
     width: 100%;
     min-height: 340px;
   }
-  .x {
+  .top {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    div {
-        text-align: start;
+    @media only screen and (max-width: 600px) {
+      margin-bottom: $xlMargin;
     }
-    .y, .z {
-        display: flex;
-        justify-content: space-between;
+    :first-child,
+    .bot {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

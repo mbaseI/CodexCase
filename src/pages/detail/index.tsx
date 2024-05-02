@@ -19,7 +19,7 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getBook(id as string));
-  }, []);
+  }, [id]);
 
   const addToBasketClick = (item: Book) => {
     const notify = () => toast('Product Added');
@@ -40,19 +40,19 @@ const Detail = () => {
       ) : (
         <div id={book.id} className={styles.container}>
           <Grid container spacing={2}>
-            <Grid item xs={5}>
+            <Grid item xs={12} sm={6} md={5}>
               <div>
                 <img src={book.image} alt='img' />
               </div>
             </Grid>
-            <Grid item xs={7}>
-              <div className={styles.x}>
-                <div className={styles.y}>
+            <Grid item xs={12} sm={6} md={7}>
+              <div className={styles.top}>
+                <div>
                   <div>{book.bookName}</div>
                   <div>{book.author}</div>
                 </div>
                 <div>{book.description}</div>
-                <div className={styles.z}>
+                <div className={styles.bot}>
                   <Button onClick={() => addToBasketClick(book)} variant='contained'>
                     Add To Basket
                   </Button>

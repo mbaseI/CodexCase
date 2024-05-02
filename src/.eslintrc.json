@@ -23,6 +23,8 @@
     "indent": "off",
     "comma-spacing": "off",
     "quotes": ["error", "single"],
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "settings": {

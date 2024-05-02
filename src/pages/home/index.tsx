@@ -127,6 +127,7 @@ const Home = () => {
                   description={item.description}
                   author={item.author}
                   price={item.price}
+                  isOnSale={item.isOnSale}
                 />
               </div>
             ))}

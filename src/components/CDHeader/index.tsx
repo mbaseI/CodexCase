@@ -41,18 +41,35 @@ const CDHeader: React.FC<CDHeaderProps> = ({ ...props }) => {
   }, [location]);
 
   return (
-    <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        marginBottom: {
+          xs: 18,
+          sm: 10,
+          xl: 10,
+        },
+      }}
+    >
       <AppBar color={'warning'} position={'fixed'}>
         <Toolbar>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid item xs={6} sm={3} xl={4}>
               <IconButton size={'large'} edge={'start'} aria-label={'menu'} sx={{ mr: 2 }}>
                 <a href='/'>
                   <img height={20} src={Logo} alt={'Logo'} />
                 </a>
               </IconButton>
             </Grid>
-            <Grid item xs={4} alignItems={'center'} display={'flex'}>
+            <Grid
+              item
+              xs={12}
+              sm={7}
+              xl={4}
+              order={{ xs: 3, sm: 2 }}
+              alignItems={'center'}
+              display={'flex'}
+            >
               <div ref={wrapperRef} className={styles.inputSection}>
                 <CDInput
                   onChange={(e) => props.onChange(e.target.value)}
@@ -78,7 +95,16 @@ const CDHeader: React.FC<CDHeaderProps> = ({ ...props }) => {
                 )}
               </div>
             </Grid>
-            <Grid item xs={4} alignItems={'center'} display={'flex'} justifyContent={'center'}>
+            <Grid
+              item
+              xs={6}
+              sm={2}
+              xl={4}
+              order={{ xs: 2, sm: 3 }}
+              alignItems={'center'}
+              display={'flex'}
+              justifyContent={'center'}
+            >
               <IconButton
                 onClick={props.openDialog}
                 size={'large'}

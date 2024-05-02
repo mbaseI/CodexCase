@@ -8,7 +8,7 @@ interface BasketItemProps extends Book {
 
 const BasketItem: React.FC<BasketItemProps> = ({ increaseClick, decreaseClick, ...item }) => {
   return (
-    <div key={item.id} className={styles.basket}>
+    <div key={item.id} className={styles.basketItem}>
       <img src={item.image} alt={'item'} />
       <div className={styles.basketItemContent}>
         <div>{item.bookName}</div>
@@ -23,7 +23,7 @@ const BasketItem: React.FC<BasketItemProps> = ({ increaseClick, decreaseClick, .
             </div>
           </div>
           <div className={styles.s}>
-            <div>Price: ${item.count ? item.count * Number(item.price) : 15}</div>
+            <div>Price: ${item.count && item.count * Number(item.price)}</div>
           </div>
         </div>
       </div>

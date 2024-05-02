@@ -3,6 +3,9 @@
 .inputSection {
   width: 100%;
   position: relative;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 10px;
+  }
   .resultSection {
     position: absolute;
     width: 100%;

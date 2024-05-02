@@ -14,14 +14,15 @@ import {
   setDialogStatus,
   setModal,
 } from '../../master/actions';
-import { Button, Container, Dialog, SxProps } from '@mui/material';
-import { useAppSelector } from '../../config/hooks';
-import CDHeader from '../CDHeader';
-import styles from './style.module.scss';
-import { Book } from '../../types';
 import { makeSelectBooks } from '../../pages/home/selector';
+import { useAppSelector } from '../../config/hooks';
+import { Book } from '../../types';
+import { Button, Container, Dialog, IconButton, SxProps } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import CDHeader from '../CDHeader';
 import BasketItem from './basketItem';
 import Checkout from './checkout';
+import styles from './style.module.scss';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -95,6 +96,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       />
       {/* //Basket Content */}
       <Dialog onClose={handleCloseDialog} fullScreen open={dialogStatus} sx={sx}>
+        <div className={styles.closeButton}>
+          <IconButton onClick={handleCloseDialog} size={'large'} color={'inherit'}>
+            <HighlightOffIcon />
+          </IconButton>
+        </div>
         {basket?.map((item: Book) => (
           <BasketItem
             key={item.id}

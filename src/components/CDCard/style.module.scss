@@ -10,26 +10,18 @@
     width: 190px;
   }
   cursor: pointer;
-  &:hover {
-    animation: remove-overflow 2s forwards;
-  }
+
   &:hover .price {
     visibility: hidden;
   }
-  &:not(:hover) {
-    animation: show-overflow 2s forwards;
-  }
-  &:not(:hover) {
-    .invisButton {
-      animation: remove-data 0.3s forwards;
-    }
-  }
+
   &:hover .invisButton {
     animation: show-data 1s forwards;
     opacity: 1;
     transition: opacity 0.3s;
   }
-  div {
+  div,
+  span {
     color: black;
   }
   .name {
@@ -43,6 +35,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .onSale {
+    display: flex;
+    justify-content: space-between;
+    :first-child {
+      text-decoration: line-through;
+    }
+    :nth-child(2) {
+      color: $CDOrange;
+    }
   }
   .action {
     display: flex;
