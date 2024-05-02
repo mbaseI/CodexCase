@@ -15,7 +15,7 @@ type CDHeaderProps = {
   results: Book[];
 };
 
-const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, results }) => {
+const CDHeader: React.FC<CDHeaderProps> = ({ ...props }) => {
   const [resultsVisibility, setResultsVisibility] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -55,7 +55,7 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, 
             <Grid item xs={4} alignItems={'center'} display={'flex'}>
               <div ref={wrapperRef} className={styles.inputSection}>
                 <CDInput
-                  onChange={(e) => onChange(e.target.value)}
+                  onChange={(e) => props.onChange(e.target.value)}
                   color={'primary'}
                   fullWidth
                   label={'Search'}
@@ -64,7 +64,7 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, 
                 />
                 {resultsVisibility && (
                   <div className={styles.resultSection}>
-                    {results.map((item: Book) => (
+                    {props.results.map((item: Book) => (
                       <CDResult
                         id={item.id}
                         key={item.id}
@@ -80,12 +80,12 @@ const CDHeader: React.FC<CDHeaderProps> = ({ basketCount, openDialog, onChange, 
             </Grid>
             <Grid item xs={4} alignItems={'center'} display={'flex'} justifyContent={'center'}>
               <IconButton
-                onClick={openDialog}
+                onClick={props.openDialog}
                 size={'large'}
                 aria-label={'show 4 new mails'}
                 color={'inherit'}
               >
-                <Badge badgeContent={basketCount} color={'error'}>
+                <Badge badgeContent={props.basketCount} color={'error'}>
                   <Basket />
                 </Badge>
               </IconButton>

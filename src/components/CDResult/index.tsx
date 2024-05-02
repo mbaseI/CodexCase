@@ -2,22 +2,22 @@ import { Link } from 'react-router-dom';
 import { Book } from '../../types';
 import styles from './style.module.scss';
 
-const CDResult: React.FC<Book> = ({ author, bookName, price, image, id }) => {
+const CDResult: React.FC<Book> = ({ ...props }) => {
   return (
     <Link
       reloadDocument
       style={{ textDecoration: 'none' }}
-      to={{ pathname: `/detail/${bookName}/${id}` }}
+      to={{ pathname: `/detail/${props.bookName}/${props.id}` }}
     >
       <div className={styles.result}>
         <div className={styles.leftSecion}>
-          <img src={image} alt={'item'} />
+          <img src={props.image} alt={'item'} />
           <div className={styles.infos}>
-            <div>{author}</div>
-            <div>{bookName}</div>
+            <div>{props.author}</div>
+            <div>{props.bookName}</div>
           </div>
         </div>
-        <div className={styles.price}>${price}</div>
+        <div className={styles.price}>${props.price}</div>
       </div>
     </Link>
   );

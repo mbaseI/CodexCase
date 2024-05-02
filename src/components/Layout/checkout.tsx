@@ -25,7 +25,7 @@ type CheckoutProps = {
   open?: boolean;
 };
 
-const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
+const Checkout: React.FC<CheckoutProps> = ({ ...props }) => {
   const dispatch = useDispatch();
   const [focus, setFocus] = React.useState<Focused>('');
 
@@ -38,11 +38,11 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
   };
 
   return (
-    <CDModal onClose={handleClose} open={open!}>
+    <CDModal onClose={props.handleClose} open={props.open!}>
       <div className={styles.checkout}>
         <div className={styles.information}>
           <span>Total Price: $7784</span>
-          <IconButton onClick={handleClose} size={'large'} color={'inherit'}>
+          <IconButton onClick={props.handleClose} size={'large'} color={'inherit'}>
             <HighlightOffIcon />
           </IconButton>
         </div>
@@ -53,7 +53,7 @@ const Checkout: React.FC<CheckoutProps> = ({ handleClose, open }) => {
           onSubmit={() => {
             const notify = () => toast('Product Your order has been received');
             notify();
-            handleClose && handleClose();
+            props.handleClose && props.handleClose();
             dispatch(setBasket([]));
           }}
         >

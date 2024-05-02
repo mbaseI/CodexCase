@@ -8,16 +8,16 @@ type SectionListProps = {
   category: string;
 };
 
-const CDSectionList: React.FC<SectionListProps> = ({ sections, onClick, selected, category }) => {
+const CDSectionList: React.FC<SectionListProps> = ({ ...props }) => {
   return (
     <>
       <div className={styles.sectionListWrapper}>
-        <div className={styles.category}>{category}</div>
+        <div className={styles.category}>{props.category}</div>
         <div className={styles.sectionList}>
-          {sections.map((item: Section) => (
+          {props.sections.map((item: Section) => (
             <span
-              className={selected === item.value ? styles.selected : ''}
-              onClick={() => onClick(item.value)}
+              className={props.selected === item.value ? styles.selected : ''}
+              onClick={() => props.onClick(item.value)}
               key={item.value}
             >
               {item.label}

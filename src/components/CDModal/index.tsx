@@ -18,10 +18,10 @@ const style = {
   maxWidth: '680px',
 };
 
-const CDModal: React.FC<CDModalProps> = ({ open, onClose, children }) => {
+const CDModal: React.FC<CDModalProps> = ({ ...props }) => {
   return (
-    <Modal onClose={onClose} open={open}>
-      <Box sx={style}>{children}</Box>
+    <Modal onClose={props.onClose} open={props.open}>
+      <Box sx={style}>{props.children}</Box>
     </Modal>
   );
 };

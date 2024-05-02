@@ -8,36 +8,28 @@ interface CDCardProps extends Book {
   onButtonClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const CDCard: React.FC<CDCardProps> = ({
-  author,
-  description,
-  price,
-  image,
-  bookName,
-  id,
-  onButtonClick,
-}) => {
+const CDCard: React.FC<CDCardProps> = ({ ...props }) => {
   return (
     <>
       <Card className={styles.card}>
-        <Link style={{ textDecoration: 'none' }} to={`/detail/${bookName}/${id}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/detail/${props.bookName}/${props.id}`}>
           <CardContent>
-            <CardMedia component={'img'} alt={'book'} height={'180'} image={image} />
+            <CardMedia component={'img'} alt={'book'} height={'180'} image={props.image} />
             <Typography className={styles.name} gutterBottom variant={'h6'} component={'div'}>
-              {bookName}
+              {props.bookName}
             </Typography>
             <Typography gutterBottom variant={'subtitle1'} component={'div'}>
-              {author}
+              {props.author}
             </Typography>
             <Typography className={styles.description} variant={'body2'} color={'text.secondary'}>
-              {description}
+              {props.description}
             </Typography>
-            <span>${price}</span>
+            <span>${props.price}</span>
           </CardContent>
         </Link>
         <div className={styles.invisButton}>
-          <span>${price}</span>
-          <Button onClick={onButtonClick} sx={{ fontWeight: 'bold' }} size='small'>
+          <span>${props.price}</span>
+          <Button onClick={props.onButtonClick} sx={{ fontWeight: 'bold' }} size='small'>
             Add to Basket
           </Button>
         </div>
