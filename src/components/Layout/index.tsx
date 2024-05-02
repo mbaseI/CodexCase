@@ -49,7 +49,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   const _increaseItem = (id: keyof Book) => {
-    console.log(id);
     dispatch(increaseItem(id));
   };
 

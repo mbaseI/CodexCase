@@ -10,7 +10,6 @@ export interface ResponseGenerator {
 
 function* getBookSaga(action: Action) {
   try {
-    console.log(action);
     const response: ResponseGenerator = yield ApiStore.books.get(action.id);
     yield put(setLoading(true));
     yield put(setBook(response.data));
