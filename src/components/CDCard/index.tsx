@@ -1,3 +1,4 @@
+import React from 'react';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardContent, CardMedia, Hidden, Typography } from '@mui/material';
