@@ -26,7 +26,6 @@ const Detail = () => {
     notify();
     dispatch(setBasket(item));
   };
-
   return (
     <Layout>
       {loading ? (
@@ -39,28 +38,32 @@ const Detail = () => {
         />
       ) : (
         <div id={book.id} className={styles.container}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={5}>
-              <div>
-                <img src={book.image} alt='img' />
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={6} md={7}>
-              <div className={styles.top}>
+          {book.id ? (
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6} md={5}>
                 <div>
-                  <div>{book.bookName}</div>
-                  <div>{book.author}</div>
+                  <img src={book.image} alt='img' />
                 </div>
-                <div>{book.description}</div>
-                <div className={styles.bot}>
-                  <Button onClick={() => addToBasketClick(book)} variant='contained'>
-                    Add To Basket
-                  </Button>
-                  <div>${book.price}</div>
+              </Grid>
+              <Grid item xs={12} sm={6} md={7}>
+                <div className={styles.top}>
+                  <div>
+                    <div>{book.bookName}</div>
+                    <div>{book.author}</div>
+                  </div>
+                  <div>{book.description}</div>
+                  <div className={styles.bot}>
+                    <Button onClick={() => addToBasketClick(book)} variant='contained'>
+                      Add To Basket
+                    </Button>
+                    <div>${book.price}</div>
+                  </div>
                 </div>
-              </div>
+              </Grid>
             </Grid>
-          </Grid>
+          ) : (
+            <div>No Product Exist</div>
+          )}
         </div>
       )}
     </Layout>

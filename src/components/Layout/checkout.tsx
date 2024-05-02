@@ -46,12 +46,11 @@ const Checkout: React.FC<CheckoutProps> = ({ ...props }) => {
             <HighlightOffIcon />
           </IconButton>
         </div>
-
         <Formik
           initialValues={initialValues}
           validationSchema={CheckoutSchema}
           onSubmit={() => {
-            const notify = () => toast('Product Your order has been received');
+            const notify = () => toast('Your order has been received');
             notify();
             props.handleClose && props.handleClose();
             dispatch(setBasket([]));
